@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>KTI Admission Portal</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- css -->
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- LEFT COLUMN FOR THE IMAGE -->
+        <div class="col-md-5 img-col p-0">
+          <div class="img-wrapper">
+            <img
+              src="https://images.theconversation.com/files/120040/original/image-20160425-22383-jttauj.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip"
+              class="img-fluid"
+            />
+
+            <!-- OVERLAY -->
+            <div class="img-overlay"></div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN FOR THE ADMISSION FORM -->
+        <div class="col-md-7 right-col px-4 py-5">
+          <div class="d-flex justify-content-center">
+            <img
+              src="https://kti.ac.ug/wp-content/uploads/2023/02/KTI-Logo-7.png"
+              class="img-fluid"
+              alt="Logo"
+            />
+          </div>
+
+          <h2 class="text-center mb-4 mt-4">ONLINE ADMISSION PORTAL</h2>
+          <form>
+            <!-- Name -->
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                placeholder="Enter your full name"
+              />
+            </div>
+
+            <!-- Sex and Date of Birth -->
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="sex">Sex</label>
+                <select id="sex" class="form-control">
+                  <option selected>Choose...</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="dob">Date of Birth</label>
+                <input type="date" class="form-control" id="dob" />
+              </div>
+            </div>
+
+            <!-- Home Parish, Subcounty, and Country -->
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="parish">Home Parish</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="parish"
+                  placeholder="Enter parish"
+                />
+              </div>
+              <div class="form-group col-md-4">
+                <label for="subcounty">Subcounty</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="subcounty"
+                  placeholder="Enter subcounty"
+                />
+              </div>
+              <div class="form-group col-md-4">
+                <label for="country">Country</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="country"
+                  placeholder="Enter country"
+                />
+              </div>
+            </div>
+
+            <!-- Permanent Address -->
+            <div class="form-group">
+              <label for="address">Permanent Address</label>
+              <input
+                type="text"
+                class="form-control"
+                id="address"
+                placeholder="Kiwatule, Kampala"
+              />
+            </div>
+
+            <!-- Current Telephone Number -->
+            <div class="form-group">
+              <label for="telephone">Current Telephone Number</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="telephone"
+                placeholder="Enter telephone number"
+              />
+            </div>
+
+            <!-- SECTION FOR UCE RESULTS -->
+            <div class="section-wrapper p-3 mb-2">
+              <h3>UCE Results</h3>
+
+              <!-- ENGLISH -->
+              <div class="form-group row">
+                <label for="english" class="col-sm-4 col-form-label subject"
+                  >English</label
+                >
+                <div class="col-sm-8">
+                  <select class="form-control" id="english">
+                    <option>D1</option>
+                    <option>D2</option>
+                    <option>C3</option>
+                    <option>C4</option>
+                    <option>C5</option>
+                    <option>C6</option>
+                    <option>P7</option>
+                    <option>P8</option>
+                    <option>F9</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- MATHEMATICS -->
+              <div class="form-group row">
+                <label for="mathematics" class="col-sm-4 col-form-label subject"
+                  >Mathematics</label
+                >
+                <div class="col-sm-8">
+                  <select class="form-control" id="mathematics">
+                    <option>D1</option>
+                    <option>D2</option>
+                    <option>C3</option>
+                    <option>C4</option>
+                    <option>C5</option>
+                    <option>C6</option>
+                    <option>P7</option>
+                    <option>P8</option>
+                    <option>F9</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- GEOGRAPHY -->
+              <div class="form-group row">
+                <label for="geography" class="col-sm-4 col-form-label subject"
+                  >Geography</label
+                >
+                <div class="col-sm-8">
+                  <select class="form-control" id="geography">
+                    <option>D1</option>
+                    <option>D2</option>
+                    <option>C3</option>
+                    <option>C4</option>
+                    <option>C5</option>
+                    <option>C6</option>
+                    <option>P7</option>
+                    <option>P8</option>
+                    <option>F9</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- PHYSICS -->
+              <div class="form-group row">
+                <label for="physics" class="col-sm-4 col-form-label subject"
+                  >Physics</label
+                >
+                <div class="col-sm-8">
+                  <select class="form-control" id="physics">
+                    <option>D1</option>
+                    <option>D2</option>
+                    <option>C3</option>
+                    <option>C4</option>
+                    <option>C5</option>
+                    <option>C6</option>
+                    <option>P7</option>
+                    <option>P8</option>
+                    <option>F9</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- BIOLOGY -->
+              <div class="form-group row">
+                <label for="biology" class="col-sm-4 col-form-label subject"
+                  >Biology</label
+                >
+                <div class="col-sm-8">
+                  <select class="form-control" id="biology">
+                    <option>D1</option>
+                    <option>D2</option>
+                    <option>C3</option>
+                    <option>C4</option>
+                    <option>C5</option>
+                    <option>C6</option>
+                    <option>P7</option>
+                    <option>P8</option>
+                    <option>F9</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- CHEMISTRY -->
+              <div class="form-group row">
+                <label for="chemistry" class="col-sm-4 col-form-label subject"
+                  >Chemistry</label
+                >
+                <div class="col-sm-8">
+                  <select class="form-control" id="chemistry">
+                    <option>D1</option>
+                    <option>D2</option>
+                    <option>C3</option>
+                    <option>C4</option>
+                    <option>C5</option>
+                    <option>C6</option>
+                    <option>P7</option>
+                    <option>P8</option>
+                    <option>F9</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- HISTORY -->
+              <div class="form-group row">
+                <label for="history" class="col-sm-4 col-form-label subject"
+                  >History</label
+                >
+                <div class="col-sm-8">
+                  <select class="form-control" id="history">
+                    <option>D1</option>
+                    <option>D2</option>
+                    <option>C3</option>
+                    <option>C4</option>
+                    <option>C5</option>
+                    <option>C6</option>
+                    <option>P7</option>
+                    <option>P8</option>
+                    <option>F9</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- ADDITIONAL SUBJECT -->
+              <div class="form-group row">
+                <input
+                  type="text"
+                  class="form-control col-sm-4"
+                  id="additionalSubject"
+                  placeholder="Enter Additional Subject"
+                />
+                <div class="col-sm-8">
+                  <select class="form-control" id="english">
+                    <option>Select</option>
+                    <option>D1</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- UPLOAD UCE PASSLIP -->
+              <div class="form-group pt-3">
+                <label for="uploadFile"
+                  >Upload Scanned UCE Passlip (Optional)</label
+                >
+                <input type="file" class="form-control-file" id="uploadFile" />
+              </div>
+            </div>
+
+            <!-- SECTION FOR UACE RESULTS -->
+            <div class="section-wrapper p-3 mt-3 mb-4">
+              <h3>UACE Results</h3>
+
+              <!-- PRINCIPAL SUBJECT 1-->
+              <div class="form-group row">
+                <input
+                  type="text"
+                  class="form-control col-sm-4"
+                  id="principal1"
+                  placeholder="Principal Subject 1"
+                />
+                <div class="col-sm-8">
+                  <select class="form-control" id="uace1">
+                    <option>Select Grade</option>
+                    <option>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                    <option>D</option>
+                    <option>E</option>
+                    <option>O</option>
+                    <option>F</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- PRINCIPAL SUBJECT 2 -->
+              <div class="form-group row">
+                <input
+                  type="text"
+                  class="form-control col-sm-4"
+                  id="principal2"
+                  placeholder="Principal Subject 2"
+                />
+                <div class="col-sm-8">
+                  <select class="form-control" id="uace2">
+                    <option>Select Grade</option>
+                    <option>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                    <option>D</option>
+                    <option>E</option>
+                    <option>O</option>
+                    <option>F</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- PRINCIPAL SUBJECT 3 -->
+              <div class="form-group row">
+                <input
+                  type="text"
+                  class="form-control col-sm-4"
+                  id="principal3"
+                  placeholder="Principal Subject 3"
+                />
+                <div class="col-sm-8">
+                  <select class="form-control" id="uace3">
+                    <option>Select Grade</option>
+                    <option>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                    <option>D</option>
+                    <option>E</option>
+                    <option>O</option>
+                    <option>F</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- SUBSIDIARY -->
+              <div class="form-group row">
+                <input
+                  type="text"
+                  class="form-control col-sm-4"
+                  id="subsidiary"
+                  placeholder="Subsidiary. e.g Sub Math"
+                />
+                <div class="col-sm-8">
+                  <select class="form-control" id="subsidiary">
+                    <option>Select Grade</option>
+                    <option>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                    <option>D</option>
+                    <option>E</option>
+                    <option>O</option>
+                    <option>F</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- UPLOAD UACE PASSLIP -->
+              <div class="form-group pt-3">
+                <label for="uploadFile"
+                  >Upload Scanned UACE Passlip (Optional)</label
+                >
+                <input type="file" class="form-control-file" id="uploadFile" />
+              </div>
+            </div>
+
+            <!-- <button type="submit" class="btn btn-primary">APPLY NOW</button> -->
+            <button type="submit" class="btn btn-success rounded-pill w-50">
+              APPLY NOW
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
