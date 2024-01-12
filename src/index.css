@@ -27,6 +27,8 @@ code {
   object-fit: cover;
   height: 100%;
   width: 100%;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 .img-wrapper {
@@ -42,6 +44,8 @@ code {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5); 
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 .center {
