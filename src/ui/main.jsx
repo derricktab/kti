@@ -15,10 +15,11 @@ export default function Main() {
           {/* LEFT COLUMN FOR THE IMAGE */}
           <div className="col-md-5 img-col p-0">
             <div className="img-wrapper">
+              
               <img
                 src="https://images.theconversation.com/files/120040/original/image-20160425-22383-jttauj.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip"
                 className="img-fluid"
-                alt="Main Image"
+                alt="Main"
               />
 
               {/* OVERLAY */}
