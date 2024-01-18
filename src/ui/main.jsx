@@ -534,7 +534,7 @@ export default function Main() {
                 <div className="form-group row">
                   <input
                     type="text"
-                    className="form-control col-sm-4 ml-3"
+                    className="form-control col-sm-4 mx-3"
                     id="additionalSubject"
                     placeholder="e.g Luganda"
                     onChange={(e) => setSelectedSubject(e.target.value)}
@@ -576,12 +576,12 @@ export default function Main() {
                 <div className="form-group row">
                   <input
                     type="text"
-                    className="form-control col-sm-4"
+                    className="form-control col-sm-4 mx-3"
                     id="principal1"
                     placeholder="Principal Subject 1"
                     onChange={(e) => setPrincipal1(e.target.value)}
                   />
-                  <div className="col-sm-8">
+                  <div className="col-sm-7">
                     <select
                       className="form-control"
                       id="uace1"
@@ -603,12 +603,12 @@ export default function Main() {
                 <div className="form-group row">
                   <input
                     type="text"
-                    className="form-control col-sm-4"
+                    className="form-control col-sm-4 mx-3"
                     id="principal2"
                     placeholder="Principal Subject 2"
                     onChange={(e) => setPrincipal2(e.target.value)}
                   />
-                  <div className="col-sm-8">
+                  <div className="col-sm-7">
                     <select
                       className="form-control"
                       id="uace2"
@@ -630,12 +630,12 @@ export default function Main() {
                 <div className="form-group row">
                   <input
                     type="text"
-                    className="form-control col-sm-4"
+                    className="form-control col-sm-4 mx-3"
                     id="principal3"
                     placeholder="Principal Subject 3"
                     onChange={(e) => setPrincipal3(e.target.value)}
                   />
-                  <div className="col-sm-8">
+                  <div className="col-sm-7">
                     <select
                       className="form-control"
                       id="uace3"
@@ -658,11 +658,11 @@ export default function Main() {
                 <div className="form-group row">
                   <input
                     type="text"
-                    className="form-control col-sm-4"
+                    className="form-control col-sm-4 mx-3"
                     id="gp"
                     placeholder="General Paper"
                   />
-                  <div className="col-sm-8">
+                  <div className="col-sm-7">
                     <select
                       className="form-control"
                       id="uace3"
@@ -681,12 +681,12 @@ export default function Main() {
                 <div className="form-group row">
                   <input
                     type="text"
-                    className="form-control col-sm-4"
+                    className="form-control col-sm-4 mx-3"
                     id="subsidiary"
                     placeholder="Subsidiary. e.g Sub Math"
                     onChange={(event) => setSubsidiary(event.target.value)}
                   />
-                  <div className="col-sm-8">
+                  <div className="col-sm-7">
                     <select
                       className="form-control"
                       id="subsidiary"

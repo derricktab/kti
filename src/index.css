@@ -89,3 +89,19 @@ code {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: 300;
 }
+
+/* MOBILE DESIGN */
+
+@media screen and (max-width: 768px) {
+  .img-col {
+    display: none;
+  }
+  .right-col {
+    margin-left: 0;
+  }
+
+  .custom-font{
+    font-size: 19px;
+    font-weight: bold;
+  }
+}
