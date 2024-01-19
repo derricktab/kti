@@ -47,6 +47,7 @@ export default function Main() {
   const [secondChoice, setSecondChoice] = useState();
   const [thirdChoice, setThirdChoice] = useState();
   const [uploading, setUploading] = useState(false);
+  const [satUACE, setSatUACE] = useState(false);
 
   const uploadFile = async (file) => {
     try {
@@ -570,151 +571,173 @@ export default function Main() {
               </div>
 
               {/* SECTION FOR UACE RESULTS */}
-              <div className="section-wrapper p-3 mt-3 mb-4">
-                <h3>UACE Results</h3>
-                {/* PRINCIPAL SUBJECT 1*/}
-                <div className="form-group row">
+
+              {/* SWITCH TO CONFIRM STUDENT SAT UACE */}
+              <div className="form-group">
+                <div className="form-check">
                   <input
-                    type="text"
-                    className="form-control col-sm-4 mx-3"
-                    id="principal1"
-                    placeholder="Principal Subject 1"
-                    onChange={(e) => setPrincipal1(e.target.value)}
+                    className="form-check-input"
+                    type="checkbox"
+                    id="uace"
+                    name="uace"
+                    value="uace"
+                    onChange={(e) => setSatUACE(e.target.checked)}
                   />
-                  <div className="col-sm-7">
-                    <select
-                      className="form-control"
-                      id="uace1"
-                      onChange={(e) => setPrincipal1Grade(e.target.value)}
-                    >
-                      <option value={""}>Select Grade</option>
-
-                      <option>A</option>
-                      <option>B</option>
-                      <option>C</option>
-                      <option>D</option>
-                      <option>E</option>
-                      <option>O</option>
-                      <option>F</option>
-                    </select>
-                  </div>
-                </div>
-                {/* PRINCIPAL SUBJECT 2 */}
-                <div className="form-group row">
-                  <input
-                    type="text"
-                    className="form-control col-sm-4 mx-3"
-                    id="principal2"
-                    placeholder="Principal Subject 2"
-                    onChange={(e) => setPrincipal2(e.target.value)}
-                  />
-                  <div className="col-sm-7">
-                    <select
-                      className="form-control"
-                      id="uace2"
-                      onChange={(e) => setPrincipal2Grade(e.target.value)}
-                    >
-                      <option value={""}>Select Grade</option>
-
-                      <option>A</option>
-                      <option>B</option>
-                      <option>C</option>
-                      <option>D</option>
-                      <option>E</option>
-                      <option>O</option>
-                      <option>F</option>
-                    </select>
-                  </div>
-                </div>
-                {/* PRINCIPAL SUBJECT 3 */}
-                <div className="form-group row">
-                  <input
-                    type="text"
-                    className="form-control col-sm-4 mx-3"
-                    id="principal3"
-                    placeholder="Principal Subject 3"
-                    onChange={(e) => setPrincipal3(e.target.value)}
-                  />
-                  <div className="col-sm-7">
-                    <select
-                      className="form-control"
-                      id="uace3"
-                      onChange={(e) => setPrincipal3Grade(e.target.value)}
-                    >
-                      <option value={""}>Select Grade</option>
-
-                      <option>A</option>
-                      <option>B</option>
-                      <option>C</option>
-                      <option>D</option>
-                      <option>E</option>
-                      <option>O</option>
-                      <option>F</option>
-                    </select>
-                  </div>
-                </div>
-
-                {/* GENERAL PAPER */}
-                <div className="form-group row">
-                  <input
-                    type="text"
-                    className="form-control col-sm-4 mx-3"
-                    id="gp"
-                    placeholder="General Paper"
-                  />
-                  <div className="col-sm-7">
-                    <select
-                      className="form-control"
-                      id="uace3"
-                      onChange={(event) => setGp(event.target.value)}
-                    >
-                      <option value={""}>Select Grade</option>
-
-                      {grades.map((grade, index) => (
-                        <option key={index}>{grade}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                {/* SUBSIDIARY */}
-                <div className="form-group row">
-                  <input
-                    type="text"
-                    className="form-control col-sm-4 mx-3"
-                    id="subsidiary"
-                    placeholder="Subsidiary. e.g Sub Math"
-                    onChange={(event) => setSubsidiary(event.target.value)}
-                  />
-                  <div className="col-sm-7">
-                    <select
-                      className="form-control"
-                      id="subsidiary"
-                      onChange={(event) =>
-                        setSubsidiaryGrade(event.target.value)
-                      }
-                    >
-                      <option value={""}>Select Grade</option>
-
-                      {grades.map((grade, index) => (
-                        <option key={index}>{grade}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-                {/* UPLOAD UACE PASSLIP */}
-                <div className="form-group pt-3">
-                  <label htmlFor="uploadFile">
-                    Upload Scanned UACE Passlip (Optional)
+                  <label className="form-check-label" htmlFor="uace">
+                    Do you have UACE results?
                   </label>
-                  <input
-                    type="file"
-                    className="form-control-file"
-                    id="uploadFile"
-                    onChange={handleUploadUACEPasslip}
-                  />
                 </div>
               </div>
+
+              {/* UACE SECTION */}
+              {satUACE && (
+                <div className="section-wrapper p-3 mt-3 mb-4">
+                  <h3>UACE Results</h3>
+                  {/* PRINCIPAL SUBJECT 1*/}
+                  <div className="form-group row">
+                    <input
+                      type="text"
+                      className="form-control col-sm-4 mx-3"
+                      id="principal1"
+                      placeholder="Principal Subject 1"
+                      onChange={(e) => setPrincipal1(e.target.value)}
+                    />
+                    <div className="col-sm-7">
+                      <select
+                        className="form-control"
+                        id="uace1"
+                        onChange={(e) => setPrincipal1Grade(e.target.value)}
+                      >
+                        <option value={""}>Select Grade</option>
+
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                        <option>E</option>
+                        <option>O</option>
+                        <option>F</option>
+                      </select>
+                    </div>
+                  </div>
+                  {/* PRINCIPAL SUBJECT 2 */}
+                  <div className="form-group row">
+                    <input
+                      type="text"
+                      className="form-control col-sm-4 mx-3"
+                      id="principal2"
+                      placeholder="Principal Subject 2"
+                      onChange={(e) => setPrincipal2(e.target.value)}
+                    />
+                    <div className="col-sm-7">
+                      <select
+                        className="form-control"
+                        id="uace2"
+                        onChange={(e) => setPrincipal2Grade(e.target.value)}
+                      >
+                        <option value={""}>Select Grade</option>
+
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                        <option>E</option>
+                        <option>O</option>
+                        <option>F</option>
+                      </select>
+                    </div>
+                  </div>
+                  {/* PRINCIPAL SUBJECT 3 */}
+                  <div className="form-group row">
+                    <input
+                      type="text"
+                      className="form-control col-sm-4 mx-3"
+                      id="principal3"
+                      placeholder="Principal Subject 3"
+                      onChange={(e) => setPrincipal3(e.target.value)}
+                    />
+                    <div className="col-sm-7">
+                      <select
+                        className="form-control"
+                        id="uace3"
+                        onChange={(e) => setPrincipal3Grade(e.target.value)}
+                      >
+                        <option value={""}>Select Grade</option>
+
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                        <option>E</option>
+                        <option>O</option>
+                        <option>F</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* GENERAL PAPER */}
+                  <div className="form-group row">
+                    <input
+                      type="text"
+                      className="form-control col-sm-4 mx-3"
+                      id="gp"
+                      placeholder="General Paper"
+                    />
+                    <div className="col-sm-7">
+                      <select
+                        className="form-control"
+                        id="uace3"
+                        onChange={(event) => setGp(event.target.value)}
+                      >
+                        <option value={""}>Select Grade</option>
+
+                        {grades.map((grade, index) => (
+                          <option key={index}>{grade}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* SUBSIDIARY */}
+                  <div className="form-group row">
+                    <input
+                      type="text"
+                      className="form-control col-sm-4 mx-3"
+                      id="subsidiary"
+                      placeholder="Subsidiary. e.g Sub Math"
+                      onChange={(event) => setSubsidiary(event.target.value)}
+                    />
+                    <div className="col-sm-7">
+                      <select
+                        className="form-control"
+                        id="subsidiary"
+                        onChange={(event) =>
+                          setSubsidiaryGrade(event.target.value)
+                        }
+                      >
+                        <option value={""}>Select Grade</option>
+
+                        {grades.map((grade, index) => (
+                          <option key={index}>{grade}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  {/* UPLOAD UACE PASSLIP */}
+                  <div className="form-group pt-3">
+                    <label htmlFor="uploadFile">
+                      Upload Scanned UACE Passlip (Optional)
+                    </label>
+                    <input
+                      type="file"
+                      className="form-control-file"
+                      id="uploadFile"
+                      onChange={handleUploadUACEPasslip}
+                    />
+                  </div>
+                </div>
+              )}
+
               {/* CHOICE OF COURSE / PROFESSION */}
               <label htmlFor="name" className="font-weight-bold">
                 Choice of Course / Profession
