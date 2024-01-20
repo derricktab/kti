@@ -3,6 +3,8 @@ import { ToastContainer } from 'react-toastify';
 import './App.css';
 import Main from './ui/main';
 import LoginScreen from './ui/login';
+import AdminDashboard from './ui/admin';
+import Applicants from './ui/applicants';
 
 function App() {
   return (
@@ -11,7 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<LoginScreen />} />
-        {/* <Route path="/admin" element={<Adm />} /> */}
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/applicants" element={<Applicants />} />
       </Routes>
     </BrowserRouter>
   );

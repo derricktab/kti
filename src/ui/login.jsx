@@ -28,6 +28,7 @@ export default function LoginScreen() {
     }
 
     if (password === "admin") {
+      localStorage.setItem("loggedIn", true);
       window.location.href = "/admin";
     } else {
       toast.error("Invalid credentials", {
