@@ -1,54 +1,106 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 export default function LoginScreen() {
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [loggingIn, setLoggingIn] = React.useState(false);
+
+  // METHOD HANDLE LOGIN
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    setLoggingIn(true);
+
+    if (username !== "admin") {
+      toast.error("Invalid Credentials", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
+      setLoggingIn(false);
+      return;
+    }
+
+    if (password === "admin") {
+      window.location.href = "/admin";
+    } else {
+      toast.error("Invalid credentials", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+
+    setLoggingIn(false);
+  };
+
   return (
     <div className="d-lg-flex half">
       <div
-        className="bg order-1 order-md-2"
-        style={{ "background-image": "url('images/bg_1.jpg')" }}
+        className="bg order-1 order-md-2 img-admin"
+        style={{
+          "background-image":
+            "url('https://img.freepik.com/free-photo/ready-back-school_1134-12.jpg')",
+        }}
       />
+
       <div className="contents order-2 order-md-1">
         <div className="container">
-          <div className="row align-items-center justify-content-center">
+          <div className="row justify-content-center main-cont">
             <div className="col-md-7">
-              <h3>
-                Login to <strong>Colorlib</strong>
+              <div className="text-center">
+                <img
+                  src="https://kti.ac.ug/wp-content/uploads/2023/02/KTI-Logo-7.png"
+                  alt="logo"
+                  className="img-fluid mb-5 mx-auto"
+                />
+              </div>
+              <h3 className="mb-4 center mt-2 mt-sm-0">
+                <strong style={{ color: "maroon" }}>ADMIN</strong> &nbsp; LOGIN
               </h3>
-              <p className="mb-4">
-                Lorem ipsum dolor sit amet elit. Sapiente sit aut eos
-                consectetur adipisicing.
-              </p>
-              <form action="#" method="post">
+
+              <form action="#" method="post" onSubmit={handleSubmit}>
+                {/* USERNAME */}
                 <div className="form-group first">
                   <label htmlFor="username">Username</label>
                   <input
                     type="text"
-                    className="form-control"
-                    placeholder="your-email@gmail.com"
+                    className="form-control rounded"
+                    placeholder="Enter Username"
                     id="username"
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
                   />
                 </div>
+
+                {/* PASSWORD */}
                 <div className="form-group last mb-3">
                   <label htmlFor="password">Password</label>
                   <input
                     type="password"
-                    className="form-control"
-                    placeholder="Your Password"
+                    className="form-control rounded"
+                    placeholder="Enter Password"
                     id="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
                   />
                 </div>
-                <div className="d-flex mb-5 align-items-center">
-                  <label className="control control--checkbox mb-0">
-                    <span className="caption">Remember me</span>
-                    <input type="checkbox" defaultChecked="checked" />
-                    <div className="control__indicator" />
-                  </label>
-                  
-                </div>
+
+                {/* SUBMIT */}
                 <input
                   type="submit"
-                  defaultValue="Log In"
-                  className="btn btn-block btn-primary"
+                  className="btn btn-block btn-success custom-button mt-4"
+                  value={loggingIn ? "Logging in..." : "Login"}
                 />
               </form>
             </div>
