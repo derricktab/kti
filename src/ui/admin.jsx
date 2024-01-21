@@ -1,14 +1,17 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect } from "react";
 import { db } from "../firebase";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminDashboard() {
+  const navigate = useNavigate();
   const [admissions, setAdmissions] = React.useState([]);
 
   function logout() {
     localStorage.setItem("loggedIn", false);
-    window.location.href = window.location.origin + "/login";
+    navigate("/login");
   }
 
   // Create a method to read all items in the "admissions" collection
@@ -45,8 +48,11 @@ export default function AdminDashboard() {
 
   // GETTING THE ADMISSIONS
   useEffect(() => {
+    const loggedIn = localStorage.getItem("loggedIn");
+    console.log("IS LOGGED IN: ", loggedIn);
+
     // CHECK IF THE USER IS LOGGED IN
-    if (!localStorage.getItem("loggedIn")) {
+    if (loggedIn === "false") {
       toast.success("Access Denied");
       window.location.href = "/login";
       return;
@@ -97,8 +103,8 @@ export default function AdminDashboard() {
                 </li>
 
                 {/* LOGOUT */}
-                <li className="active" onClick={() => logout()}>
-                  <a href="tr">
+                <li className="active">
+                  <a href="#" onClick={() => logout()}>
                     <i className="fa fa-sign-out red_color" />{" "}
                     <span>Logout</span>
                   </a>
