@@ -46,19 +46,12 @@ export default function LoginScreen() {
   };
 
   return (
-    <div className="d-lg-flex half">
-      <div
-        className="bg order-1 order-md-2 img-admin"
-        style={{
-          "background-image":
-            "url('https://img.freepik.com/free-photo/ready-back-school_1134-12.jpg')",
-        }}
-      />
-
-      <div className="contents order-2 order-md-1">
-        <div className="container">
-          <div className="row justify-content-center main-cont">
-            <div className="col-md-7">
+    <div className="order-2 order-md-1">
+      <div className="container-fluid">
+        <div className="row justify-content-center main-cont">
+          {/* LEFT COLUMN */}
+          <div className="col-md-6">
+            <div className="container">
               <div className="text-center">
                 <img
                   src="https://kti.ac.ug/wp-content/uploads/2023/02/KTI-Logo-7.png"
@@ -105,6 +98,15 @@ export default function LoginScreen() {
                 />
               </form>
             </div>
+          </div>
+
+          {/* FORM IMAGE */}
+          <div className="col-md-5 p-0">
+            <img
+              src="https://images.theconversation.com/files/120040/original/image-20160425-22383-jttauj.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip"
+              className="img-fluid"
+              alt="Main"
+            />
           </div>
         </div>
       </div>
