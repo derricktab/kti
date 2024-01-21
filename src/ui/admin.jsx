@@ -1,19 +1,22 @@
 import React, { useEffect } from "react";
 import { db } from "../firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 export default function AdminDashboard() {
   const [admissions, setAdmissions] = React.useState([]);
 
   function logout() {
     localStorage.setItem("loggedIn", false);
-    window.location.href = "/login";
+    window.location.href = window.location.origin + "/login";
   }
 
   // Create a method to read all items in the "admissions" collection
   const getAdmissions = async () => {
     try {
-      const admissionsCollection = await getDocs(collection(db, "admissions"));
+      const admissionsCollection = await getDocs(
+        query(collection(db, "admissions"), orderBy("createdAt", "desc"))
+      );
       const admissionsData = [];
       admissionsCollection.forEach((doc) => {
         admissionsData.push({ id: doc.id, ...doc.data() });
@@ -25,8 +28,29 @@ export default function AdminDashboard() {
       return [];
     }
   };
+
+  const formatDate = (inputDate) => {
+    const date = new Date(inputDate);
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const day = date.getDate().toString().padStart(2, "0");
+    const hours = date.getHours().toString().padStart(2, "0");
+    const minutes = date.getMinutes().toString().padStart(2, "0");
+    const seconds = date.getSeconds().toString().padStart(2, "0");
+
+    const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+    return formattedDate;
+  };
+
   // GETTING THE ADMISSIONS
   useEffect(() => {
+    // CHECK IF THE USER IS LOGGED IN
+    if (!localStorage.getItem("loggedIn")) {
+      toast.success("Access Denied");
+      window.location.href = "/login";
+      return;
+    }
     getAdmissions();
   }, []);
 
@@ -214,7 +238,7 @@ export default function AdminDashboard() {
                                   </td>
 
                                   <td className="text-center">
-                                    {admission.dob}
+                                    {formatDate(admission.dob)}
                                   </td>
 
                                   <td className="text-center">
@@ -227,7 +251,7 @@ export default function AdminDashboard() {
                                     {admission.thirdChoice}
                                   </td>
                                   <td className="text-center">
-                                    {admission.createdAt}
+                                    {formatDate(admission.createdAt)}
                                   </td>
                                   <td className="text-center">
                                     {admission.address}
@@ -307,9 +331,9 @@ export default function AdminDashboard() {
 
                                   {/* UBTEB */}
                                   <td className="text-center">
-                                    {admission.UBTEBPasslip && (
+                                    {admission.UBTEBTranscript && (
                                       <a
-                                        href={admission.UBTEBPasslip}
+                                        href={admission.UBTEBTranscript}
                                         target="_blank"
                                         rel="noreferrer"
                                       >
@@ -321,10 +345,9 @@ export default function AdminDashboard() {
                                       </a>
                                     )}
 
-                                    {!admission.UBTEBPasslip && (
+                                    {!admission.UBTEBTranscript && (
                                       <p className="text-center">N/A</p>
                                     )}
-                                    
                                   </td>
 
                                   {/* Parent */}
@@ -340,7 +363,6 @@ export default function AdminDashboard() {
                                   <td className="text-center">
                                     {admission.parent_phoneNumber}
                                   </td>
-
                                 </tr>
                               ))}
                             </tbody>
