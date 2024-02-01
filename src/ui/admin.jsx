@@ -18,7 +18,7 @@ export default function AdminDashboard() {
   const getAdmissions = async () => {
     try {
       const admissionsCollection = await getDocs(
-        query(collection(db, "admissions"), orderBy("createdAt", "desc"))
+        query(collection(db, "scholarship_applications"), orderBy("createdAt", "desc"))
       );
       const admissionsData = [];
       admissionsCollection.forEach((doc) => {
@@ -174,7 +174,7 @@ export default function AdminDashboard() {
                             {admissions.length}
                           </p>
                           <p className="head_couter text-white">
-                            Total Applicants
+                            Total Bursary Applicants
                           </p>
                         </div>
                       </div>
@@ -187,7 +187,7 @@ export default function AdminDashboard() {
                     <div className="white_shd full">
                       <div className="full graph_head">
                         <div className="heading1 margin_0">
-                          <h2>APPLICANTS </h2>
+                          <h2>BURSARY APPLICANTS </h2>
                         </div>
                       </div>
 
@@ -206,23 +206,38 @@ export default function AdminDashboard() {
                                 <th className="text-center">1st Choice</th>
                                 <th className="text-center">2nd Choice</th>
                                 <th className="text-center">3rd Choice</th>
+                                <th className="text-center">4th Choice</th>
                                 <th className="text-center">
                                   Application Date
                                 </th>
                                 <th className="text-center">Address</th>
-                                <th className="text-center">Home Parish</th>
-                                <th className="text-center">Sub Country</th>
-                                <th className="text-center">Country</th>
-                                <th className="text-center">PLE</th>
+                                <th className="text-center">
+                                  Reason For Applying
+                                </th>
+                                <th className="text-center">
+                                  Source of Tuition
+                                </th>
+                                <th className="text-center">Nationality</th>
+
                                 <th className="text-center">UCE</th>
                                 <th className="text-center">UACE</th>
                                 <th className="text-center">UBTEB</th>
-                                <th className="text-center">Parent Name</th>
-                                <th className="text-center">Parent DOB</th>
-                                <th className="text-center">Parent Village</th>
                                 <th className="text-center">
-                                  Parent Phone Number
+                                  Next of Kin Name
                                 </th>
+                                <th className="text-center">
+                                  Next of Kin Address
+                                </th>
+                                <th className="text-center">
+                                  Next of Kin Phone Number
+                                </th>
+                                <th className="text-center">Parent Phone</th>
+
+                                <th className="text-center">Relative Name</th>
+                                <th className="text-center">
+                                  Relative Address
+                                </th>
+                                <th className="text-center">Relative Phone</th>
                               </tr>
                             </thead>
 
@@ -257,40 +272,22 @@ export default function AdminDashboard() {
                                     {admission.thirdChoice}
                                   </td>
                                   <td className="text-center">
+                                    {admission.fourthChoice}
+                                  </td>
+                                  <td className="text-center">
                                     {formatDate(admission.createdAt)}
                                   </td>
                                   <td className="text-center">
                                     {admission.address}
                                   </td>
                                   <td className="text-center">
-                                    {admission.homeParish}
+                                    {admission.reason}
                                   </td>
                                   <td className="text-center">
-                                    {admission.subcounty}
+                                    {admission.financeSource}
                                   </td>
                                   <td className="text-center">
-                                    {admission.country}
-                                  </td>
-
-                                  {/* PLE */}
-                                  <td className="text-center">
-                                    {admission.PLEPasslip && (
-                                      <a
-                                        href={admission.PLEPasslip}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                      >
-                                        <img
-                                          src="https://cdn-icons-png.flaticon.com/512/888/888108.png"
-                                          alt="PLE"
-                                          height={30}
-                                        />
-                                      </a>
-                                    )}
-
-                                    {!admission.PLEPasslip && (
-                                      <p className="text-center">N/A</p>
-                                    )}
+                                    {admission.nationality}
                                   </td>
 
                                   {/* UCE */}
@@ -356,19 +353,29 @@ export default function AdminDashboard() {
                                     )}
                                   </td>
 
-                                  {/* Parent */}
+                                  {/* Next Of Kin */}
                                   <td className="text-center">
-                                    {admission.parentName}
+                                    {admission.NOKName}
                                   </td>
                                   <td className="text-center">
-                                    {admission.parent_dob}
+                                    {admission.NOKAddress}
                                   </td>
                                   <td className="text-center">
-                                    {admission.parent_village}
+                                    {admission.NOKPhone}
+                                  </td>
+
+                                  {/* Relative details */}
+                                  <td className="text-center">
+                                    {admission.relativeName}
                                   </td>
                                   <td className="text-center">
-                                    {admission.parent_phoneNumber}
+                                    {admission.relativeAddress}
                                   </td>
+                                  <td className="text-center">
+                                    {admission.relativePhone}
+                                  </td>
+
+                                  
                                 </tr>
                               ))}
                             </tbody>

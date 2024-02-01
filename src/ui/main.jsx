@@ -9,20 +9,10 @@ export default function Main() {
   const [name, setName] = useState("");
   const [sex, setSex] = useState("");
   const [dob, setDob] = useState("");
-  const [homeParish, setHomeParish] = useState("");
-  const [subcounty, setSubcounty] = useState("");
-  const [country, setCountry] = useState("");
+  const [nationality, setNationality] = useState("");
   const [address, setAddress] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
-  const [parentName, setParentName] = useState("");
-  const [parent_country, setParent_country] = useState("");
-  const [parent_nationality, setParent_nationality] = useState("");
-  const [parent_phoneNumber, setParent_phoneNumber] = useState("");
-  const [parent_district, setParent_district] = useState("");
-  const [parent_subcounty, setParent_subcounty] = useState("");
-  const [parent_dob, setParent_dob] = useState("");
-  const [parent_village, setParent_village] = useState("");
   const [chemistry, setChemistry] = useState("");
   const [biology, setBiology] = useState("");
   const [math, setMath] = useState("");
@@ -49,10 +39,7 @@ export default function Main() {
   const [thirdChoice, setThirdChoice] = useState();
   const [uploading, setUploading] = useState(false);
   const [satUACE, setSatUACE] = useState(false);
-  const [satUCE, setSatUCE] = useState(false);
   const [satUBTEB, setSatUBTEB] = useState(false);
-  const [pleGrade, setPleGrade] = useState("");
-  const [PLEPasslip, setPLEPasslip] = useState();
   const [lastSchool, setLastSchool] = useState("");
   const [year, setYear] = useState("");
   const [fourthChoice, setFourthChoice] = useState("");
@@ -65,6 +52,7 @@ export default function Main() {
   const [relativeAddress, setRelativeAddress] = useState("");
   const [declaration, setDeclaration] = useState(false);
   const [reason, setReason] = useState("");
+  const [financeSource, setFinanceSource] = useState("");
 
   const uploadFile = async (file) => {
     try {
@@ -85,15 +73,6 @@ export default function Main() {
       return null;
     }
   };
-
-  // RECEIVE UPLOADED UCE PASSLIP AND UPLOAD TO FIREBASE STORAGE
-  async function handleUploadPLEPasslip(event) {
-    // receive the selected file
-    const file = event.target.files[0];
-    if (file) {
-      setPLEPasslip(file);
-    }
-  }
 
   // RECEIVE UPLOADED UCE PASSLIP AND UPLOAD TO FIREBASE STORAGE
   async function handleUploadUCEPasslip(event) {
@@ -167,10 +146,23 @@ export default function Main() {
   //   METHOD TO HANDLE SUBMIT
   async function handleSubmit(event) {
     event.preventDefault();
+
+    if(!declaration) {
+      toast.error("Please accept the declaration", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    }
+
     setUploading(true);
     let UCEPasslipURL = null;
     let UACEPasslipURL = null;
-    let PLEPasslipURL = null;
     let UBTEBTranscriptURL = null;
 
     if (UCEPasslip) {
@@ -185,28 +177,24 @@ export default function Main() {
       UBTEBTranscriptURL = await uploadFile(UBTEBTranscript);
     }
 
-    if (PLEPasslip) {
-      PLEPasslipURL = await uploadFile(PLEPasslip);
-    }
-
     const data = {
       name: name,
       sex: sex,
       dob: dob,
-      homeParish: homeParish,
-      subcounty: subcounty,
-      country: country,
+      nationality: nationality,
       address: address,
       phoneNumber: phoneNumber,
       email: email,
-      parentName: parentName,
-      parent_country: parent_country,
-      parent_nationality: parent_nationality,
-      parent_phoneNumber: parent_phoneNumber,
-      parent_district: parent_district,
-      parent_subcounty: parent_subcounty,
-      parent_dob: parent_dob,
-      parent_village: parent_village,
+      lastSchool: lastSchool,
+      year: year,
+      NOKAddress: NOKAddress,
+      NOKPhone: NOKPhone,
+      NOKName: NOKName,
+      reason: reason,
+      financeSource: financeSource,
+      relativeName: relativeName,
+      relativeNumber: relativePhone,
+      relativeAddress: relativeAddress,
       chemistry: chemistry,
       biology: biology,
       math: math,
@@ -228,11 +216,10 @@ export default function Main() {
       UCEPasslip: UCEPasslipURL,
       UACEPasslip: UACEPasslipURL,
       UBTEBTranscript: UBTEBTranscriptURL,
-      ple_aggresgates: pleGrade,
-      PLEPasslip: PLEPasslipURL,
       firstChoice: firstChoice,
       secondChoice: secondChoice,
       thirdChoice: thirdChoice,
+      fourthChoice: fourthChoice,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };
@@ -240,9 +227,9 @@ export default function Main() {
     console.log(JSON.stringify(data));
 
     try {
-      await addDoc(collection(db, "admissions"), data);
+      await addDoc(collection(db, "scholarship_applications"), data);
 
-      toast.success("Admission Request Received, Thank you for Applying");
+      toast.success("Scholarship Application Submitted, We shall get back to you soon.");
 
       // WAIT 5 SECONDS
       await new Promise((resolve) => setTimeout(resolve, 5000));
@@ -433,7 +420,7 @@ export default function Main() {
                     className="form-control"
                     id="nationality"
                     placeholder="Enter nationality"
-                    onChange={(e) => setCountry(e.target.value)}
+                    onChange={(e) => setNationality(e.target.value)}
                     required
                   />
                 </div>
@@ -1115,14 +1102,9 @@ export default function Main() {
                 </div>
               )}
 
-
-             
               {/* REASON FOR APPLYING */}
               <div className="form-group">
-                <label
-                  htmlFor="fullname"
-                  className=" required col-form-label"
-                >
+                <label htmlFor="fullname" className=" required col-form-label">
                   State Reason for Applying For The Bursary
                 </label>
                 <input
@@ -1137,33 +1119,32 @@ export default function Main() {
 
               {/* FINANCING THE BALANCE */}
               <div className="form-group">
-                <label
-                  htmlFor="dob"
-                  className=" required col-form-label"
-                >
-                  How do you intend to finance the remaining balance if the bursary is granted to you?
+                <label htmlFor="dob" className=" required col-form-label">
+                  How do you intend to finance the remaining balance if the
+                  bursary is granted to you?
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  onChange={(event) => setParent_dob(event.target.value)}
+                  onChange={(event) => setFinanceSource(event.target.value)}
                   required
                 />
               </div>
 
-              <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    id="declaration"
-                    type="checkbox"
-                    onChange={(e) => setDeclaration(e.target.checked)}
-                    required
-                  />
-                  <label className="form-check-label" htmlFor="declaration">
-                    I declare that the above information is true and correct to the best of my knowledge and beleif, and i shall obey the rules and regulations made from time to time.
-                  </label>
-                </div>
-
+              <div className="form-check mt-5 pt-3">
+                <input
+                  className="form-check-input"
+                  id="declaration"
+                  type="checkbox"
+                  onChange={(e) => setDeclaration(e.target.checked)}
+                  required
+                />
+                <label className="form-check-label" htmlFor="declaration">
+                  I declare that the above information is true and correct to
+                  the best of my knowledge and beleif, and i shall obey the
+                  rules and regulations made from time to time.
+                </label>
+              </div>
 
               {/* APPLY NOW */}
               <button

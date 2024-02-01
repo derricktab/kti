@@ -27,7 +27,7 @@ export default function LoginScreen() {
       return;
     }
 
-    if (password === "admin") {
+    if (password === "SuperAdmin@1") {
       localStorage.setItem("loggedIn", true);
       window.location.href = "/admin";
     } else {
