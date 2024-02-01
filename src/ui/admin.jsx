@@ -18,7 +18,7 @@ export default function AdminDashboard() {
   const getAdmissions = async () => {
     try {
       const admissionsCollection = await getDocs(
-        query(collection(db, "scholarship_applications"), orderBy("createdAt", "desc"))
+        query(collection(db, "bursary_applications"), orderBy("createdAt", "desc"))
       );
       const admissionsData = [];
       admissionsCollection.forEach((doc) => {
@@ -229,9 +229,8 @@ export default function AdminDashboard() {
                                   Next of Kin Address
                                 </th>
                                 <th className="text-center">
-                                  Next of Kin Phone Number
+                                  Next of Kin Phone 
                                 </th>
-                                <th className="text-center">Parent Phone</th>
 
                                 <th className="text-center">Relative Name</th>
                                 <th className="text-center">

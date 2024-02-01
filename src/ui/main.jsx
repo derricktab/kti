@@ -193,7 +193,7 @@ export default function Main() {
       reason: reason,
       financeSource: financeSource,
       relativeName: relativeName,
-      relativeNumber: relativePhone,
+      relativePhone: relativePhone,
       relativeAddress: relativeAddress,
       chemistry: chemistry,
       biology: biology,
@@ -227,7 +227,7 @@ export default function Main() {
     console.log(JSON.stringify(data));
 
     try {
-      await addDoc(collection(db, "scholarship_applications"), data);
+      await addDoc(collection(db, "bursary_applications"), data);
 
       toast.success("Scholarship Application Submitted, We shall get back to you soon.");
 
