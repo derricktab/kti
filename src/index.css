@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:wght@700&display=swap");
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -5,6 +7,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: rgba(0, 0, 0, 0.799);
+  letter-spacing: 0.5px;
 }
 
 code {
@@ -42,7 +46,7 @@ code {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
 }
@@ -89,8 +93,10 @@ code {
 }
 
 .custom-font {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-weight: 300;
+  font-family: "Crimson Text", serif;
+  font-weight: 400;
+  margin-top: 50px !important;
+  margin-bottom: 30px !important;
 }
 
 /* MOBILE DESIGN */

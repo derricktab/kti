@@ -53,6 +53,9 @@ export default function Main() {
   const [satUBTEB, setSatUBTEB] = useState(false);
   const [pleGrade, setPleGrade] = useState("");
   const [PLEPasslip, setPLEPasslip] = useState();
+  const [lastSchool, setLastSchool] = useState("");
+  const [year, setYear] = useState("");
+  const [fourthChoice, setFourthChoice] = useState("");
 
   const uploadFile = async (file) => {
     try {
@@ -233,11 +236,10 @@ export default function Main() {
       toast.success("Admission Request Received, Thank you for Applying");
 
       // WAIT 5 SECONDS
-      await new Promise(resolve => setTimeout(resolve, 5000));
+      await new Promise((resolve) => setTimeout(resolve, 5000));
 
       // VISIT GIVEN SITE
       window.location.href = "https://www.kti.ac.ug/";
-      
     } catch (error) {
       toast.error("Something went wrong: " + error.message);
     }
@@ -253,7 +255,7 @@ export default function Main() {
           <div className="col-md-5 img-col p-0">
             <div className="img-wrapper">
               <img
-                src="https://images.theconversation.com/files/120040/original/image-20160425-22383-jttauj.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip"
+                src="https://studenthub.africa/app/uploads/careers/vWOc4M_Lr6_ZaSmoVmbsTRz5evM4j0bL.jpg"
                 className="img-fluid"
                 alt="Main"
               />
@@ -263,7 +265,7 @@ export default function Main() {
             </div>
           </div>
           {/* RIGHT COLUMN FOR THE ADMISSION FORM */}
-          <div className="col-md-7 right-col px-4 py-5">
+          <div className="col-md-7 right-col px-5 py-5">
             <div className="d-flex justify-content-center">
               <img
                 src="https://kti.ac.ug/wp-content/uploads/2023/02/KTI-Logo-7.png"
@@ -271,9 +273,81 @@ export default function Main() {
                 alt="Logo"
               />
             </div>
-            <h2 className="text-center mb-4 mt-5 custom-font">
-              ONLINE ADMISSION PORTAL
-            </h2>
+            <h1 className="text-center mb-4 mt-5 custom-font bold">
+              SKILLS DEVELOPMENT FACILITATION GRANT (SDFG)
+            </h1>
+
+            <div>
+              The Skills Development Facilitation Grant (SDFG) Is a Fund that is
+              Instituted & managed by Tertiary Institutions to partially sponsor
+              students who have completed either P.7, JC, NC, S.4, or S.6,
+              Interested to join careers in Technical, Vocational Education &
+              Training (TVET) Courses on Diploma & Certificates. The offer
+              covers between 40-50% of the student's total tuition & functional
+              fees for two years of either the Junior Certificate, National
+              Certificate or National Diploma in Business, Technical &
+              vocational Courses.
+            </div>
+            <div>
+              All courses in this arrangement are examined by Uganda Business &
+              Technical Examinations Board (UBTEB) except ECD. Beneficiaries
+              under this category are selected by the Institution based on both
+              performance, talent or individual interest!.
+            </div>
+            <h2 className="mt-3 mb-2">Eligibility</h2>
+            <div>
+              Eligible students to apply in this program <b>MUST:</b>
+            </div>
+            <ol className="pl-3 mt-2">
+              <li>Be Ugandan Nationals,</li>
+              <li>
+                Have:
+                <ol type="i" className="pl-3">
+                  <li>
+                    3 passes obtained at PLE for those joining Junior
+                    Certificates,
+                  </li>
+                  <li>
+                    3 passes & above obtained at UCE for those joining National
+                    Certificates,
+                  </li>
+                  <li>
+                    At least 2nd Class Upper & above from National Certificate
+                    (ubteb) for those joining National Diplomas.
+                  </li>
+                  <li>
+                    At least 1 principal pass & 2 subsidiary passes & 3-5 passes
+                    at 'O' Level for those joining National Diplomas as well.
+                  </li>
+                  <li>
+                    Discipline & Academic competitiveness is key for every
+                    applicant in this program.
+                  </li>
+                </ol>
+              </li>
+            </ol>
+            <h2 className="my-2">Application</h2>
+            <div>
+              Interested APPLICANTS SHOULD APPLY ON either CERTIFICATE or
+              DIPLOMA in the FOLLOWING COURSES:
+            </div>
+            <ol className="mb-5 pl-3 mt-3" type="1">
+              <li>Electrical Engineering.</li>
+              <li>Civil Engineering.</li>
+              <li>Water Engineering.</li>
+              <li>Automobile Engineering.</li>
+              <li>Information Technology.</li>
+              <li>Fashion & Design.</li>
+              <li>Hotel Management.</li>
+              <li>Tourism Management.</li>
+              <li>Cosmetology/Hairdressing.</li>
+              <li>Art & Industrial Design.</li>
+              <li>Accounting.</li>
+              <li>Business Administration</li>
+              <li>Journalism.</li>
+              <li>Nursery Teacher Education.</li>
+            </ol>
+
             <form onSubmit={handleSubmit}>
               {/* Name */}
               <div className="form-group">
@@ -323,63 +397,38 @@ export default function Main() {
                 </div>
               </div>
 
-              {/* Home Parish, Subcounty, and Country */}
               <div className="form-row">
-                <div className="form-group col-md-4">
-                  <label className="required form-label" htmlFor="parish">
-                    Home Parish
+                {/* Address */}
+
+                <div className="form-group col-md-6">
+                  <label className="required form-label" htmlFor="address">
+                    Address
                   </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="parish"
-                    placeholder="Enter parish"
-                    onChange={(e) => setHomeParish(e.target.value)}
+                    id="address"
+                    placeholder="Kiwatule, Kampala"
+                    onChange={(e) => setAddress(e.target.value)}
                     required
                   />
                 </div>
-                <div className="form-group col-md-4">
-                  <label className="required form-label" htmlFor="subcounty">
-                    Subcounty
+
+                {/* NATIONALITY */}
+                <div className="form-group col-md-6">
+                  <label className="required form-label" htmlFor="nationality">
+                    Nationality
                   </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="subcounty"
-                    placeholder="Enter subcounty"
-                    onChange={(e) => setSubcounty(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="form-group col-md-4">
-                  <label className="required form-label" htmlFor="country">
-                    Country
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="country"
-                    placeholder="Enter country"
+                    id="nationality"
+                    placeholder="Enter nationality"
                     onChange={(e) => setCountry(e.target.value)}
                     required
                   />
                 </div>
               </div>
-              {/* Permanent Address */}
-              <div className="form-group">
-                <label className="required form-label" htmlFor="address">
-                  Permanent Address
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="address"
-                  placeholder="Kiwatule, Kampala"
-                  onChange={(e) => setAddress(e.target.value)}
-                  required
-                />
-              </div>
-
               <div className="form-row">
                 {/* Current Telephone Number */}
                 <div className="form-group col-md-6">
@@ -409,36 +458,33 @@ export default function Main() {
                 </div>
               </div>
 
-              {/* PLE RESULTS */}
-              <div className="section-wrapper p-3 mb-2">
-                <h3>PLE Results</h3>
-                {/* PLE */}
-                <div className="form-group row">
-                  <label
-                    htmlFor="ple"
-                    className="required col-sm-4 col-form-label subject"
-                  >
-                    Aggregates
+              {/* LAST SCHOOL ATTENDED */}
+              <div className="form-row">
+                <div className="form-group col-8">
+                  <label htmlFor="lastSchool" className="required form-label">
+                    Last School Attended
                   </label>
-
-                  <div className="col-sm-8">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="ple"
-                      onChange={(e) => setPleGrade(e.target.value)}
-                    />
-                  </div>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="lastSchool"
+                    placeholder="Enter the last school you attended"
+                    onChange={(e) => setLastSchool(e.target.value)}
+                    required
+                  />
                 </div>
 
-                {/* UPLOAD UCE PASSLIP */}
-                <div className="form-group pt-3">
-                  <label htmlFor="uploadFile">Upload Scanned PLE Passlip</label>
+                {/* YEAR */}
+                <div className="form-group col-4">
+                  <label htmlFor="year" className="required form-label">
+                    Year
+                  </label>
                   <input
-                    type="file"
-                    className="form-control-file"
-                    id="uploadFile"
-                    onChange={handleUploadPLEPasslip}
+                    type="text"
+                    className="form-control"
+                    id="year"
+                    placeholder="Enter year"
+                    onChange={(e) => setYear(e.target.value)}
                     required
                   />
                 </div>
@@ -448,219 +494,205 @@ export default function Main() {
 
               {/* SECTION FOR UCE RESULTS */}
 
-              {/* SWITCH TO CONFIRM STUDENT SAT UCE */}
-              <div className="form-group section-wrapper p-3">
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    id="uce"
-                    name="uce"
-                    value="uce"
-                    onChange={(e) => setSatUCE(e.target.checked)}
-                  />
-                  <label className="form-check-label" htmlFor="uce">
-                    I have UCE Results
+              <div className="section-wrapper p-3 mb-2">
+                <h3>UCE Results</h3>
+                {/* ENGLISH */}
+                <div className="form-group row">
+                  <label
+                    htmlFor="english"
+                    className=" col-sm-4 col-form-label subject required"
+                  >
+                    English
                   </label>
+                  <div className="col-sm-8">
+                    <select
+                      className="form-control"
+                      required
+                      id="english"
+                      onChange={(e) => setEnglish(e.target.value)}
+                    >
+                      <option value={""}>Select Grade</option>
+                      {grades.map((grade, index) => (
+                        <option key={index}>{grade}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                {/* MATHEMATICS */}
+                <div className="form-group row">
+                  <label
+                    htmlFor="mathematics"
+                    className=" col-sm-4 col-form-label subject required"
+                  >
+                    Mathematics
+                  </label>
+                  <div className="col-sm-8">
+                    <select
+                      className="form-control"
+                      required
+                      id="mathematics"
+                      onChange={(e) => setMath(e.target.value)}
+                    >
+                      <option value={""}>Select Grade</option>
+                      {grades.map((grade, index) => (
+                        <option key={index}>{grade}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                {/* GEOGRAPHY */}
+                <div className="form-group row">
+                  <label
+                    htmlFor="geography"
+                    className=" col-sm-4 col-form-label subject required"
+                  >
+                    Geography
+                  </label>
+                  <div className="col-sm-8">
+                    <select
+                      className="form-control"
+                      required
+                      id="geography"
+                      onChange={(e) => setGeography(e.target.value)}
+                    >
+                      <option value={""}>Select Grade</option>
+
+                      {grades.map((grade, index) => (
+                        <option key={index}>{grade}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                {/* PHYSICS */}
+                <div className="form-group row">
+                  <label
+                    htmlFor="physics"
+                    className=" col-sm-4 col-form-label subject required"
+                  >
+                    Physics
+                  </label>
+                  <div className="col-sm-8">
+                    <select
+                      className="form-control"
+                      required
+                      id="physics"
+                      onChange={(e) => setPhysics(e.target.value)}
+                    >
+                      <option value={""}>Select Grade</option>
+
+                      {grades.map((grade, index) => (
+                        <option key={index}>{grade}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                {/* BIOLOGY */}
+                <div className="form-group row">
+                  <label
+                    htmlFor="biology"
+                    className=" col-sm-4 col-form-label subject required"
+                  >
+                    Biology
+                  </label>
+                  <div className="col-sm-8">
+                    <select
+                      required
+                      className="form-control"
+                      id="biology"
+                      onChange={(e) => setBiology(e.target.value)}
+                    >
+                      <option value={""}>Select Grade</option>
+
+                      {grades.map((grade, index) => (
+                        <option key={index}>{grade}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                {/* CHEMISTRY */}
+                <div className="form-group row">
+                  <label
+                    htmlFor="chemistry"
+                    className=" col-sm-4 col-form-label subject required"
+                  >
+                    Chemistry
+                  </label>
+                  <div className="col-sm-8">
+                    <select
+                      required
+                      className="form-control"
+                      id="chemistry"
+                      onChange={(e) => setChemistry(e.target.value)}
+                    >
+                      <option value={""}>Select Grade</option>
+
+                      {grades.map((grade, index) => (
+                        <option key={index}>{grade}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                {/* HISTORY */}
+                <div className="form-group row">
+                  <label
+                    htmlFor="history"
+                    className=" col-sm-4 col-form-label subject required"
+                  >
+                    History
+                  </label>
+                  <div className="col-sm-8">
+                    <select
+                      className="form-control"
+                      id="history"
+                      onChange={(e) => setHistory(e.target.value)}
+                      required
+                    >
+                      <option value={""}>Select Grade</option>
+                      {grades.map((grade, index) => (
+                        <option key={index}>{grade}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                {/* ADDITIONAL SUBJECT */}
+                <label htmlFor="additionalSubject" className="required">
+                  Additional Subject
+                </label>
+                <div className="form-group row">
+                  <input
+                    type="text"
+                    className="form-control col-sm-4 mx-3"
+                    id="additionalSubject"
+                    placeholder="e.g Luganda"
+                    onChange={(e) => setSelectedSubject(e.target.value)}
+                  />
+                  <div className="col-sm-7">
+                    <select
+                      className="form-control"
+                      id="english"
+                      onChange={(e) => setSelectedSubjectGrade(e.target.value)}
+                    >
+                      <option value={""}>Select Grade</option>
+
+                      {grades.map((grade, index) => (
+                        <option key={index}>{grade}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                {/* UPLOAD UCE PASSLIP */}
+                <div className="form-group pt-3">
+                  <label htmlFor="uploadFile">
+                    Upload Scanned UCE Passlip (Optional)
+                  </label>
+                  <input
+                    type="file"
+                    className="form-control-file"
+                    id="uploadFile"
+                    onChange={handleUploadUCEPasslip}
+                  />
                 </div>
               </div>
-
-              {satUCE && (
-                <div className="section-wrapper p-3 mb-2">
-                  <h3>UCE Results</h3>
-                  {/* ENGLISH */}
-                  <div className="form-group row">
-                    <label
-                      htmlFor="english"
-                      className=" col-sm-4 col-form-label subject"
-                    >
-                      English
-                    </label>
-                    <div className="col-sm-8">
-                      <select
-                        className="form-control"
-                        id="english"
-                        onChange={(e) => setEnglish(e.target.value)}
-                      >
-                        <option value={""}>Select Grade</option>
-                        {grades.map((grade, index) => (
-                          <option key={index}>{grade}</option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                  {/* MATHEMATICS */}
-                  <div className="form-group row">
-                    <label
-                      htmlFor="mathematics"
-                      className=" col-sm-4 col-form-label subject"
-                    >
-                      Mathematics
-                    </label>
-                    <div className="col-sm-8">
-                      <select
-                        className="form-control"
-                        id="mathematics"
-                        onChange={(e) => setMath(e.target.value)}
-                      >
-                        <option value={""}>Select Grade</option>
-                        {grades.map((grade, index) => (
-                          <option key={index}>{grade}</option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                  {/* GEOGRAPHY */}
-                  <div className="form-group row">
-                    <label
-                      htmlFor="geography"
-                      className=" col-sm-4 col-form-label subject"
-                    >
-                      Geography
-                    </label>
-                    <div className="col-sm-8">
-                      <select
-                        className="form-control"
-                        id="geography"
-                        onChange={(e) => setGeography(e.target.value)}
-                      >
-                        <option value={""}>Select Grade</option>
-
-                        {grades.map((grade, index) => (
-                          <option key={index}>{grade}</option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                  {/* PHYSICS */}
-                  <div className="form-group row">
-                    <label
-                      htmlFor="physics"
-                      className=" col-sm-4 col-form-label subject"
-                    >
-                      Physics
-                    </label>
-                    <div className="col-sm-8">
-                      <select
-                        className="form-control"
-                        id="physics"
-                        onChange={(e) => setPhysics(e.target.value)}
-                      >
-                        <option value={""}>Select Grade</option>
-
-                        {grades.map((grade, index) => (
-                          <option key={index}>{grade}</option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                  {/* BIOLOGY */}
-                  <div className="form-group row">
-                    <label
-                      htmlFor="biology"
-                      className=" col-sm-4 col-form-label subject"
-                    >
-                      Biology
-                    </label>
-                    <div className="col-sm-8">
-                      <select
-                        className="form-control"
-                        id="biology"
-                        onChange={(e) => setBiology(e.target.value)}
-                      >
-                        <option value={""}>Select Grade</option>
-
-                        {grades.map((grade, index) => (
-                          <option key={index}>{grade}</option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                  {/* CHEMISTRY */}
-                  <div className="form-group row">
-                    <label
-                      htmlFor="chemistry"
-                      className=" col-sm-4 col-form-label subject"
-                    >
-                      Chemistry
-                    </label>
-                    <div className="col-sm-8">
-                      <select
-                        className="form-control"
-                        id="chemistry"
-                        onChange={(e) => setChemistry(e.target.value)}
-                      >
-                        <option value={""}>Select Grade</option>
-
-                        {grades.map((grade, index) => (
-                          <option key={index}>{grade}</option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                  {/* HISTORY */}
-                  <div className="form-group row">
-                    <label
-                      htmlFor="history"
-                      className=" col-sm-4 col-form-label subject"
-                    >
-                      History
-                    </label>
-                    <div className="col-sm-8">
-                      <select
-                        className="form-control"
-                        id="history"
-                        onChange={(e) => setHistory(e.target.value)}
-                      >
-                        <option value={""}>Select Grade</option>
-                        {grades.map((grade, index) => (
-                          <option key={index}>{grade}</option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                  {/* ADDITIONAL SUBJECT */}
-                  <label htmlFor="additionalSubject" >
-                    Additional Subject
-                  </label>
-                  <div className="form-group row">
-                    <input
-                      type="text"
-                      className="form-control col-sm-4 mx-3"
-                      id="additionalSubject"
-                      placeholder="e.g Luganda"
-                      onChange={(e) => setSelectedSubject(e.target.value)}
-                    />
-                    <div className="col-sm-7">
-                      <select
-                        className="form-control"
-                        id="english"
-                        onChange={(e) =>
-                          setSelectedSubjectGrade(e.target.value)
-                        }
-                      >
-                        <option value={""}>Select Grade</option>
-
-                        {grades.map((grade, index) => (
-                          <option key={index}>{grade}</option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                  {/* UPLOAD UCE PASSLIP */}
-                  <div className="form-group pt-3">
-                    <label htmlFor="uploadFile">
-                      Upload Scanned UCE Passlip (Optional)
-                    </label>
-                    <input
-                      type="file"
-                      className="form-control-file"
-                      id="uploadFile"
-                      onChange={handleUploadUCEPasslip}
-                    />
-                  </div>
-                </div>
-              )}
 
               {/* SECTION FOR UACE RESULTS */}
 
@@ -684,7 +716,7 @@ export default function Main() {
               {/* UACE SECTION */}
               {satUACE && (
                 <div className="section-wrapper p-3 mt-3 mb-4">
-                  <h3 className="pb-2">UACE Results</h3> 
+                  <h3 className="pb-2">UACE Results</h3>
                   {/* PRINCIPAL SUBJECT 1*/}
                   <div className="form-group row">
                     <input
@@ -865,11 +897,11 @@ export default function Main() {
                 </div>
               )}
 
-              <br/>
+              <br />
 
               {/* CHOICE OF COURSE / PROFESSION */}
               <label htmlFor="name" className="font-weight-bold">
-                Choice of Course / Profession
+                Which Courses Are You Applying For?
               </label>
               {/* 1ST CHOICE */}
               <div className="form-group row">
@@ -937,6 +969,53 @@ export default function Main() {
                   </select>
                 </div>
               </div>
+
+              {/* FOURTH CHOICE */}
+              <div className="form-group row">
+                <label
+                  htmlFor="course"
+                  className=" required col-sm-4 col-form-label"
+                >
+                  4th Choice
+                </label>
+                <div className="col-sm-8">
+                  <select
+                    className="form-control"
+                    id="course"
+                    onChange={(e) => setFourthChoice(e.target.value)}
+                    required
+                  >
+                    <option>Select</option>
+                    {courseOptions.map((course) => (
+                      <option key={course}>{course}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* NEXT OF KIN */}
+              <div className="section-wrapper p-3 mb-2">
+                <h3>Next Of Kin</h3>
+                {/* NAME */}
+                <div className="form-group row">
+                  <label
+                    htmlFor="ple"
+                    className="required col-sm-4 col-form-label subject"
+                  >
+                    Name
+                  </label>
+
+                  <div className="col-sm-8">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="ple"
+                      onChange={(e) => setPleGrade(e.target.value)}
+                    />
+                  </div>
+                </div>
+              </div>
+
               {/* PARENTS / GUARDIANS INFORMATION */}
               <label htmlFor="parents" className="font-weight-bold mt-4">
                 PARENT / GUARDIAN'S INFORMATION (All Students are required to
@@ -981,7 +1060,10 @@ export default function Main() {
               </div>
               {/* PARENT / GUARDIAN VILLAGE OF BIRTH */}
               <div className="form-group row">
-                <label htmlFor="village" className="col-sm-2 col-form-label required">
+                <label
+                  htmlFor="village"
+                  className="col-sm-2 col-form-label required"
+                >
                   Village
                 </label>
                 <input
