@@ -56,6 +56,15 @@ export default function Main() {
   const [lastSchool, setLastSchool] = useState("");
   const [year, setYear] = useState("");
   const [fourthChoice, setFourthChoice] = useState("");
+  const [NOKAddress, setNOKAddress] = useState("");
+  const [NOKName, setNOKName] = useState("");
+  const [NOKPhone, setNOKPhone] = useState("");
+  const [hasRelativeNearby, setHasRelativeNearby] = useState(false);
+  const [relativeName, setRelativeName] = useState("");
+  const [relativePhone, setRelativePhone] = useState("");
+  const [relativeAddress, setRelativeAddress] = useState("");
+  const [declaration, setDeclaration] = useState(false);
+  const [reason, setReason] = useState("");
 
   const uploadFile = async (file) => {
     try {
@@ -994,180 +1003,172 @@ export default function Main() {
               </div>
 
               {/* NEXT OF KIN */}
-              <div className="section-wrapper p-3 mb-2">
-                <h3>Next Of Kin</h3>
+              <div className="section-wrapper p-3 mb-2 mt-3">
+                <h4 className="mb-3">NEXT OF KIN</h4>
                 {/* NAME */}
                 <div className="form-group row">
                   <label
-                    htmlFor="ple"
-                    className="required col-sm-4 col-form-label subject"
+                    htmlFor="fullname"
+                    className=" required col-sm-2 col-form-label"
                   >
-                    Name
+                    Full Name
                   </label>
+                  <input
+                    type="text"
+                    className="form-control col-sm-10"
+                    id="parent_fullname"
+                    name="parent_fullname"
+                    onChange={(e) => {
+                      setNOKName(e.target.value);
+                    }}
+                    required
+                  />
+                </div>
 
-                  <div className="col-sm-8">
+                <div className="form-row">
+                  {/* ADDRESS */}
+                  <div className="form-group col-md-5">
+                    <label htmlFor="address">Address</label>
                     <input
                       type="text"
                       className="form-control"
-                      id="ple"
-                      onChange={(e) => setPleGrade(e.target.value)}
+                      id="address"
+                      onChange={(e) => setNOKAddress(e.target.value)}
+                    />
+                  </div>
+
+                  {/* PHONE NUMBER */}
+                  <div className="form-group col-md-7">
+                    <label htmlFor="phone">Phone Number</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="phone"
+                      onChange={(e) => setNOKPhone(e.target.value)}
                     />
                   </div>
                 </div>
               </div>
 
-              {/* PARENTS / GUARDIANS INFORMATION */}
-              <label htmlFor="parents" className="font-weight-bold mt-4">
-                PARENT / GUARDIAN'S INFORMATION (All Students are required to
-                give facts on the following)
-              </label>
-              {/* NAME OF PARENT / GUARDIAN */}
-              <div className="form-group row">
+              {/* SWITCH TO CONFIRM STUDENT HAS A RELATIVE AROUND KAMPALA */}
+              <div className="form-group  section-wrapper1 p-3">
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    id="hasRelative"
+                    type="checkbox"
+                    onChange={(e) => setHasRelativeNearby(e.target.checked)}
+                  />
+                  <label className="form-check-label" htmlFor="hasRelative">
+                    I have a relative or friend near and around Kampala
+                  </label>
+                </div>
+              </div>
+
+              {/* RELATIVE DETAILS*/}
+              {hasRelativeNearby && (
+                <div className="section-wrapper p-3 mb-2 mt-3">
+                  <h4 className="mb-3">RELATIVE / FRIEND DETAILS</h4>
+                  {/* NAME */}
+                  <div className="form-group row">
+                    <label
+                      htmlFor="fullname"
+                      className=" required col-sm-2 col-form-label"
+                    >
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control col-sm-10"
+                      id="parent_fullname"
+                      name="parent_fullname"
+                      onChange={(e) => {
+                        setRelativeName(e.target.value);
+                      }}
+                      required
+                    />
+                  </div>
+
+                  <div className="form-row">
+                    {/* ADDRESS */}
+                    <div className="form-group col-md-5">
+                      <label htmlFor="address">Address</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="address"
+                        onChange={(e) => setRelativeAddress(e.target.value)}
+                      />
+                    </div>
+
+                    {/* PHONE NUMBER */}
+                    <div className="form-group col-md-7">
+                      <label htmlFor="phone">Phone Number</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="phone"
+                        onChange={(e) => setRelativePhone(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+
+
+             
+              {/* REASON FOR APPLYING */}
+              <div className="form-group">
                 <label
                   htmlFor="fullname"
-                  className=" required col-sm-2 col-form-label"
+                  className=" required col-form-label"
                 >
-                  Full Name
+                  State Reason for Applying For The Bursary
                 </label>
                 <input
                   type="text"
-                  className="form-control col-sm-10"
-                  id="parent_fullname"
-                  name="parent_fullname"
-                  placeholder="Parent/Guardian's Name"
+                  className="form-control"
                   onChange={(e) => {
-                    setParentName(e.target.value);
+                    setReason(e.target.value);
                   }}
                   required
                 />
               </div>
-              {/* PARENT / GUARDIAN DATE OF BIRTH */}
-              <div className="form-group row">
+
+              {/* FINANCING THE BALANCE */}
+              <div className="form-group">
                 <label
                   htmlFor="dob"
-                  className=" required col-sm-2 col-form-label"
+                  className=" required col-form-label"
                 >
-                  Date of Birth
+                  How do you intend to finance the remaining balance if the bursary is granted to you?
                 </label>
                 <input
-                  type="date"
-                  className="form-control col-sm-10"
-                  id="parent_dob"
-                  name="parent_dob"
+                  type="text"
+                  className="form-control"
                   onChange={(event) => setParent_dob(event.target.value)}
                   required
                 />
               </div>
-              {/* PARENT / GUARDIAN VILLAGE OF BIRTH */}
-              <div className="form-group row">
-                <label
-                  htmlFor="village"
-                  className="col-sm-2 col-form-label required"
-                >
-                  Village
-                </label>
-                <input
-                  type="text"
-                  className="form-control col-sm-10"
-                  id="parent_village"
-                  name="parent_village"
-                  placeholder="Parent/Guardian's Village of Birth"
-                  onChange={(e) => setParent_village(e.target.value)}
-                  required
-                />
-              </div>
-              {/* PARENT / GUARDIAN SUBSCOUNTY */}
-              <div className="form-group row">
-                <label htmlFor="subcounty" className="col-sm-2 col-form-label">
-                  Subcounty
-                </label>
-                <input
-                  type="text"
-                  className="form-control col-sm-10"
-                  id="parent_subcounty"
-                  name="parent_subcounty"
-                  placeholder="Parent/Guardian's Subcounty"
-                  onChange={(e) => setParent_subcounty(e.target.value)}
-                />
-              </div>
-              {/* PARENT / GUARDIAN DISTRICT */}
-              <div className="form-group row">
-                <label
-                  htmlFor="district"
-                  className=" required col-sm-2 col-form-label"
-                >
-                  District
-                </label>
-                <input
-                  type="text"
-                  className="form-control col-sm-10"
-                  id="parent_district"
-                  name="parent_district"
-                  placeholder="Parent/Guardian's District"
-                  onChange={(e) => setParent_district(e.target.value)}
-                  required
-                />
-              </div>
-              {/* PARENT / GUARDIAN NATIONALITY */}
-              <div className="form-group row">
-                <label
-                  htmlFor="nationality"
-                  className=" required col-sm-2 col-form-label"
-                >
-                  Nationality
-                </label>
-                <input
-                  type="text"
-                  className="form-control col-sm-10"
-                  id="parent_nationality"
-                  name="parent_nationality"
-                  placeholder="Parent/Guardian's Nationality"
-                  onChange={(e) => setParent_nationality(e.target.value)}
-                  required
-                />
-              </div>
-              {/* PARENT / GUARDIAN COUNTRY OF RESIDENCE */}
-              <div className="form-group row">
-                <label
-                  htmlFor="country"
-                  className=" required col-sm-2 col-form-label"
-                >
-                  Country
-                </label>
-                <input
-                  type="text"
-                  className="form-control col-sm-10"
-                  id="parent_country"
-                  name="parent_country"
-                  placeholder="Parent/Guardian's Country of Residence"
-                  onChange={(e) => setParent_country(e.target.value)}
-                  required
-                />
-              </div>
 
-              {/* PARENT / GUARDIAN PHONENUMBER */}
-              <div className="form-group row">
-                <label
-                  htmlFor="phonenumber"
-                  className=" required col-sm-2 col-form-label"
-                >
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  className="form-control col-sm-10"
-                  id="parent_phonenumber"
-                  name="parent_phonenumber"
-                  placeholder="Parent/Guardian's Phone Number"
-                  onChange={(e) => setParent_phoneNumber(e.target.value)}
-                  required
-                />
-              </div>
+              <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    id="declaration"
+                    type="checkbox"
+                    onChange={(e) => setDeclaration(e.target.checked)}
+                    required
+                  />
+                  <label className="form-check-label" htmlFor="declaration">
+                    I declare that the above information is true and correct to the best of my knowledge and beleif, and i shall obey the rules and regulations made from time to time.
+                  </label>
+                </div>
+
 
               {/* APPLY NOW */}
               <button
                 type="submit"
-                className="btn btn-success rounded-pill w-100 mt-4 center"
+                className="btn btn-success rounded-pill w-100 mt-4 center apply"
               >
                 {uploading ? <Loader /> : "APPLY NOW"}
               </button>
