@@ -261,9 +261,10 @@ export default function Main() {
           <div className="col-md-7 right-col px-5 py-5">
             <div className="d-flex justify-content-center">
               <img
-                src="https://kti.ac.ug/wp-content/uploads/2023/02/KTI-Logo-7.png"
-                className="img-fluid"
+                src="/sdfg.jpg"
+                className="logo"
                 alt="Logo"
+                height={150}
               />
             </div>
             <h1 className="text-center mb-4 mt-5 custom-font bold">
