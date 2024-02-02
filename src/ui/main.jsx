@@ -103,42 +103,37 @@ export default function Main() {
     return <div className="loader"></div>;
   };
   const courseOptions = [
-    "National Diploma in Accountancy",
-    "National Diploma in Business Administration",
-    "National Diploma in Marketing",
-    "National Diploma in Tourism Management",
-    "National Diploma in Journalism",
-    "National Diploma in Hotels & Institutional Catering",
-    "National Diploma in Secretarial Studies",
-    "Diploma in ECD Teacher Education",
-    "National Certificate in Accountancy",
-    "National Certificate in Business Administration",
-    "National Certificate in Marketing",
-    "National Certificate in Journalism",
-    "National Certificate in Tourism Management",
-    "National Certificate in Hotels & Institutional Catering",
-    "National Certificate in Secretarial Studies",
-    "Certificate in ECD Teacher Education",
-    "National Diploma in Computer Science",
-    "National Diploma in Information Technology",
-    "Diploma in Art & Design",
-    "National Diploma in Fashion Design",
-    "National Diploma in Cosmetology & Hair Dressing",
-    "National Diploma in Interior Design",
-    "National Certificate in Computer Science",
-    "National Certificate in Information & Communications Technology",
-    "Certificate in Art & Design",
-    "National Certificate in Fashion & Design",
-    "National Certificate in Cosmetology & Beauty Therapy",
-    "National Diploma in Civil Engineering",
-    "National Diploma in Electrical Engineering",
-    "National Diploma in Auto-Mobile Engineering",
-    "National Diploma in Water Engineering",
-    "National Certificate in Building & Construction",
-    "National Certificate in Electrical Systems & Installation",
-    "National Certificate in Automotive Vehicle Mechanics",
-    "National Certificate in Plumbing",
-    "National Certificate in Welding",
+    "National Diploma in Electrical Engineering (NDEE)",
+    "National Certificate in Electrical Installation Systems (NCES)",
+    "National Certificate in Welding & Metal Fabrication (NCWMF)",
+    "National Diploma in Civil Engineering (NDCE)",
+    "National Certificate in Building & Construction (NCBC)",
+    "National Diploma in Automobile Engineering (NDAE)",
+    "National Certificate in Automotive Mechanics (NCAM)",
+    "National Diploma in water & Sanitation Engineering (NDWSE)",
+    "National Certificate in Plumbing & Pipe Fittings (NCPL)",
+    "National Diploma in Architecture (NDAD)",
+    "National Diploma in ICT (NDICT)",
+    "National Diploma in Computer science (NDCS)",
+    "National Certificate in ICT (NCICT)",
+    "National Diploma in Fashion & Garment Design (NDFD)",
+    "National Certificate in Fashion & Garment Design (NCFD)",
+    "National Diploma in Hotel Management & Institutional Catering (NDHIC)",
+    "National Certificate in Hotel Management & Institutional Catering (NCHIC)",
+    "National Diploma in Tourism Management (NDTM)",
+    "National Certificate in Tourism Management (NCTM)",
+    "National Diploma in Cosmetology (NDCos)",
+    "National Certificate in Hair Dressing Technology (NCHDT)",
+    "National Diploma in Accounting (NDA)",
+    "National Certificate in Accounting (NCBA)",
+    "National Diploma in Business Administration (NDBA)",
+    "National Certificate in Business Administration (NCBA)",
+    "National Diploma in Journalism (NDJ)",
+    "National Certificate in Journalism (NCJ)",
+    "Diploma in Nursery Teacher Education (ECDTE)",
+    "Certificate in Nursery Teacher Education (ECDTE)",
+    "Diploma in Art & Industrial Designs (AID)",
+    "Certificate in Art & Industrial Designs (AID)",
   ];
 
   const grades = ["D1", "D2", "C3", "C4", "C5", "C6", "P7", "P8", "F9"];
@@ -147,7 +142,7 @@ export default function Main() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    if(!declaration) {
+    if (!declaration) {
       toast.error("Please accept the declaration", {
         position: "top-right",
         autoClose: 5000,
@@ -229,7 +224,9 @@ export default function Main() {
     try {
       await addDoc(collection(db, "bursary_applications"), data);
 
-      toast.success("Scholarship Application Submitted, We shall get back to you soon.");
+      toast.success(
+        "Scholarship Application Submitted, We shall get back to you soon."
+      );
 
       // WAIT 5 SECONDS
       await new Promise((resolve) => setTimeout(resolve, 5000));
@@ -276,13 +273,13 @@ export default function Main() {
             <div>
               The Skills Development Facilitation Grant (SDFG) Is a Fund that is
               Instituted & managed by Tertiary Institutions to partially sponsor
-              students who have completed either P.7, JC, NC, S.4, or S.6,
-              Interested to join careers in Technical, Vocational Education &
-              Training (TVET) Courses on Diploma & Certificates. The offer
-              covers between 40-50% of the student's total tuition & functional
-              fees for two years of either the Junior Certificate, National
-              Certificate or National Diploma in Business, Technical &
-              vocational Courses.
+              students who have completed either P.7, Junior Certificate,
+              National Certificate, S.4, or S.6, Interested to join careers in
+              Technical, Vocational Education & Training (TVET) Courses on
+              Diploma & Certificates. The offer covers between 40-50% of the
+              student's total tuition & functional fees for two years of either
+              the Junior Certificate, National Certificate or National Diploma
+              in Business, Technical & vocational Courses.
             </div>
             <div>
               All courses in this arrangement are examined by Uganda Business &
@@ -328,21 +325,52 @@ export default function Main() {
               DIPLOMA in the FOLLOWING COURSES:
             </div>
             <ol className="mb-5 pl-3 mt-3" type="1">
-              <li>Electrical Engineering.</li>
-              <li>Civil Engineering.</li>
-              <li>Water Engineering.</li>
-              <li>Automobile Engineering.</li>
-              <li>Information Technology.</li>
-              <li>Fashion & Design.</li>
-              <li>Hotel Management.</li>
-              <li>Tourism Management.</li>
-              <li>Cosmetology/Hairdressing.</li>
-              <li>Art & Industrial Design.</li>
-              <li>Accounting.</li>
-              <li>Business Administration</li>
-              <li>Journalism.</li>
-              <li>Nursery Teacher Education.</li>
+              <li>National Diploma in Electrical Engineering (NDEE)</li>
+              <li>
+                National Certificate in Electrical Installation Systems (NCES)
+              </li>
+              <li>
+                National Certificate in Welding & Metal Fabrication (NCWMF)
+              </li>
+              <li>National Diploma in Civil Engineering (NDCE)</li>
+              <li>National Certificate in Building & Construction (NCBC)</li>
+              <li>National Diploma in Automobile Engineering (NDAE)</li>
+              <li>National Certificate in Automotive Mechanics (NCAM)</li>
+              <li>
+                National Diploma in water & Sanitation Engineering (NDWSE)
+              </li>
+              <li>National Certificate in Plumbing & Pipe Fittings (NCPL)</li>
+              <li>National Diploma in Architecture (NDAD)</li>
+              <li>National Diploma in ICT (NDICT)</li>
+              <li>National Diploma in Computer science (NDCS)</li>
+              <li>National Certificate in ICT (NCICT)</li>
+              <li>National Diploma in Fashion & Garment Design (NDFD)</li>
+              <li>National Certificate in Fashion & Garment Design (NCFD)</li>
+              <li>
+                National Diploma in Hotel Management & Institutional Catering
+                (NDHIC)
+              </li>
+              <li>
+                National Certificate in Hotel Management & Institutional
+                Catering (NCHIC)
+              </li>
+              <li>National Diploma in Tourism Management (NDTM)</li>
+              <li>National Certificate in Tourism Management (NCTM)</li>
+              <li>National Diploma in Cosmetology (NDCos)</li>
+              <li>National Certificate in Hair Dressing Technology (NCHDT)</li>
+              <li>National Diploma in Accounting (NDA)</li>
+              <li>National Certificate in Accounting (NCBA)</li>
+              <li>National Diploma in Business Administration (NDBA)</li>
+              <li>National Certificate in Business Administration (NCBA)</li>
+              <li>National Diploma in Journalism (NDJ)</li>
+              <li>National Certificate in Journalism (NCJ)</li>
+              <li>Diploma in Nursery Teacher Education (ECDTE)</li>
+              <li>Certificate in Nursery Teacher Education (ECDTE)</li>
+              <li>Diploma in Art & Industrial Designs (AID)</li>
+              <li>Certificate in Art & Industrial Designs (AID)</li>
             </ol>
+
+            <h3 className="mt-5 mb-3">Sponsorship Application Form</h3>
 
             <form onSubmit={handleSubmit}>
               {/* Name */}
@@ -1105,7 +1133,7 @@ export default function Main() {
               {/* REASON FOR APPLYING */}
               <div className="form-group">
                 <label htmlFor="fullname" className=" required col-form-label">
-                  State Reason for Applying For The Bursary
+                  State Reason for Applying For The Partial Sponsorship
                 </label>
                 <input
                   type="text"
@@ -1121,7 +1149,7 @@ export default function Main() {
               <div className="form-group">
                 <label htmlFor="dob" className=" required col-form-label">
                   How do you intend to finance the remaining balance if the
-                  bursary is granted to you?
+                  partial sponsorship is granted to you?
                 </label>
                 <input
                   type="text"
@@ -1139,7 +1167,7 @@ export default function Main() {
                   onChange={(e) => setDeclaration(e.target.checked)}
                   required
                 />
-                <label className="form-check-label" htmlFor="declaration">
+                <label className="form-check-label pl-2" htmlFor="declaration">
                   I declare that the above information is true and correct to
                   the best of my knowledge and beleif, and i shall obey the
                   rules and regulations made from time to time.
